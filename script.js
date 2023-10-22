@@ -3,14 +3,26 @@ let finalScore = document.querySelector(".final-score");
 let results = document.querySelector(".end-result");
 let endGameText = document.querySelector(".end-game-text");
 let startTest = false;
-// let startGame = false;
+let highScores = document.querySelector(".high-scores");
+let highScoresContainer = document.querySelector(".high-scores-container");
 let count = document.querySelector(".timer .count");
-let startQuiz = document.querySelector(".start-game");
+let submitButton = document.querySelector(".submit");
+let initialsEntered = document.querySelector(".initials-input");
+// -------------------
+let startQuiz = document.querySelector(".start-quiz-button");
+let gamePrompt = document.querySelector(".start-game");
+let goBackButton = document.querySelector(".go-back");
+let clearScoresButton = document.querySelector(".clear-scores");
+// -------------------
 count.innerText = timer;
 
-// initGame()
+// initGame();
 
-
+submitButton.addEventListener("click", () => {
+  saveScore(initialsEntered.value.toUpperCase(), timer);
+  results.classList.remove("show");
+  highScoresContainer.classList.remove("hidden");
+});
 
 if (startTest) {
 }
@@ -222,7 +234,6 @@ if (startTest) {
 //=========================================================================================================================================
 
 let question = document.querySelectorAll(".question");
-
 question.forEach((q) => {
   q.addEventListener("click", (e) => {
     if (!e.target.classList.contains("list-style")) {
@@ -267,11 +278,6 @@ function validate(valid, result) {
         ) {
           each.classList.remove("hidden");
           each.dataset.checked = true;
-          //  let check = Array.from(questionContainer.querySvalidectorAll(".question")).every(f => {
-          //     return f.dataset.checked === "true"
-          // })
-          // console.log(check)
-          // if(questionContainer.querySvalidectorAll)
         }
       });
     if (valid.dataset.question === "5") {
@@ -289,5 +295,48 @@ function validate(valid, result) {
 }
 
 function initGame() {
- startTest = true
+  startTest = true;
+}
+
+function saveScore(name, score) {
+  console.log(name, score);
+  if (localStorage.getItem("_HIGHSCORES") == null) {
+    let arr = [];
+    arr.push({ initials: name, score: score });
+    console.log(arr);
+    saveToLocal(arr);
+    addScore(arr);
+  } else if (localStorage.getItem("_HIGHSCORES")) {
+    let arr = JSON.parse(localStorage.getItem("_HIGHSCORES"));
+    arr.push({ initials: name, score });
+    console.log(arr);
+
+    saveToLocal(arr);
+    console.log(arr);
+    addScore(arr);
   }
+}
+
+function addScore(arr) {
+  arr.forEach((score) => {
+    let newScore = document.createElement("li");
+    newScore.classList.add("score");
+    newScore.innerHTML = ` <span>${score.initials} - </span> <span class="score-number">${score.score}</span>`;
+    highScores.appendChild(newScore);
+  });
+}
+
+function saveToLocal(toSave) {
+  localStorage.setItem("_HIGHSCORES", JSON.stringify(toSave));
+}
+
+function checkLocal(arr) {
+  let getFromLocal = localStorage.getItem("_HIGHSCORES");
+  if (getFromLocal != null) {
+    let data = JSON.parse(getFromLocal);
+    console.log(data);
+    arr.push(data);
+  } else return;
+
+  return arr;
+}

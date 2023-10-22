@@ -8,7 +8,17 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="high-scores">View high scores</div>
+    <div class="high-scores-button">View high scores</div>
+
+    <div class="high-scores-container ">
+      <ul class="high-scores">
+        <h2>High Scores</h2>
+        <div class="button-container">
+          <div class="go-back">Go Back</div>
+          <div class="clear-scores">Clear Scores</div>
+        </div>
+      </ul>
+    </div>
 
     <div class="questions">
       <div class="end-result">
@@ -16,19 +26,19 @@
         <p>Your final score is <span class="final-score">50</span></p>
         <span class="init">Enter Your Initials Here: </span>
         <div class="inputs">
-          <input type="text" class="initials" />
+          <input type="text" class="initials-input" />
           <input class="submit" type="button" value="Submit" />
         </div>
       </div>
 
-      <div class="start-game">
+      <div class="start-game hidden">
         <h2>Coding Challenge Quiz</h2>
         <p>
-          Try to answer the following coding-related question within the
+          Try to answer the following coding-related questions within the
           allotted time frame. Keep in mind that wrongly answered questions will
           deduct 10 points from the timer, so stay sharp! 😉
         </p>
-        <button>Start Quiz</button>
+        <button class="start-quiz-button">Start Quiz</button>
       </div>
     </div>
     <div class="timer">Time Remaining: <span class="count">75</span></div>
