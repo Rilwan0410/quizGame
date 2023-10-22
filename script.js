@@ -3,17 +3,25 @@ let finalScore = document.querySelector(".final-score");
 let results = document.querySelector(".end-result");
 let endGameText = document.querySelector(".end-game-text");
 let startTest = false;
+// let startGame = false;
 let count = document.querySelector(".timer .count");
+let startQuiz = document.querySelector(".start-game");
+count.innerText = timer;
+
+// initGame()
+
+
 
 if (startTest) {
-  let time = setInterval(() => {
+}
+let time = setInterval(() => {
+  if (startTest) {
     if (timer <= 0) return;
     timer--;
     count.innerText = timer;
-  }, 1000);
-}
+  }
+}, 1000);
 
-count.innerText = timer;
 let questions = [
   {
     questionNumber: 1,
@@ -202,24 +210,21 @@ q5.innerHTML = `
 <div class="correct">Correct ✅</div>
 </div>`;
 
-// questionContainer.append(q1);
-// questionContainer.append(q2);
-// questionContainer.append(q3);
-// questionContainer.append(q4);
-// questionContainer.append(q5);
-let question = document.querySelectorAll(".question");
-console.log(questionContainer);
+if (startTest) {
+  startQuiz.classList.add("hidden");
+  questionContainer.append(q1);
+  questionContainer.append(q2);
+  questionContainer.append(q3);
+  questionContainer.append(q4);
+  questionContainer.append(q5);
+}
 
 //=========================================================================================================================================
 
-// setInterval(()=> {
-//     timer--
-//     count.innerText = timer
-//     }, 1000)
+let question = document.querySelectorAll(".question");
 
 question.forEach((q) => {
   q.addEventListener("click", (e) => {
-    console.log(q);
     if (!e.target.classList.contains("list-style")) {
       return;
     } else {
@@ -233,6 +238,7 @@ question.forEach((q) => {
   });
 });
 
+//=========================================================================================================================================
 function checkCorrect(answer, validation, el) {
   if (answer === validation) {
     validate(el, "correct");
@@ -244,7 +250,6 @@ function checkCorrect(answer, validation, el) {
     console.log("incorrect");
   }
 }
-//=========================================================================================================================================
 
 function validate(valid, result) {
   valid.querySelector(`.${result}`).classList.add("show");
@@ -282,3 +287,7 @@ function validate(valid, result) {
     }
   }, 2000);
 }
+
+function initGame() {
+ startTest = true
+  }

@@ -206,3 +206,39 @@ body {
 .end-result .submit:hover {
   opacity: 0.85;
 }
+
+
+.start-game{
+    display:flex;
+    flex-direction:column;
+    justify-content:center; 
+    align-items:center;
+    text-align:center;
+    width:600px;
+    border:3px solid black;
+    padding:40px;
+    border-radius:50px;
+}
+.start-game.hidden{
+    display:none;
+}
+
+.start-game h2{
+    font-size:2rem;
+    margin:0;
+}
+.start-game p{
+    font-size:1.5rem;
+}
+
+
+.start-game button{
+    font-size:1.2rem;
+    padding:15px 25px;
+    font-family:poppins;
+    background:black;
+    color:white;
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+}
