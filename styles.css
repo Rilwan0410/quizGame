@@ -1,15 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&family=Sometype+Mono:wght@400;500;600;700&display=swap");
 
 body {
   font-family: poppins;
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
 }
 
+.questions {
+  align-self: center;
+}
 
-.question{
-    border:3px solid black;
-    width:fit-content;
-    padding:30px 50px;
-    border-radius:50px;
+.question {
+  border: 3px solid black;
+  width: fit-content;
+  padding: 30px 50px;
+  border-radius: 50px;
+  position: relative;
+  z-index: 100;
 }
 .question-text {
   font-weight: 400;
@@ -20,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding:10px
+  padding: 10px;
 }
 .choice-container {
   display: flex;
@@ -66,4 +74,54 @@ body {
   background: white;
   color: black;
   border: 2px solid black;
+}
+
+.high-scores {
+  cursor: pointer;
+}
+
+.timer {
+}
+
+.high-scores,
+.timer {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 20px;
+  border: 2px solid black;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 20px;
+}
+.count {
+  font-weight: 400;
+  font-size: 1.4rem;
+  font-family: "Sometype Mono";
+}
+
+.incorrect {
+  bottom: 0;
+  color: red;
+}
+.correct {
+  top: 0;
+  color: rgb(28, 197, 28);
+}
+
+.incorrect,
+.correct {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.correct.show {
+  transform: translateY(-70px);
+  opacity: 1;
+}
+.incorrect.show {
+  transform: translateY(70px);
+  opacity: 1;
 }
