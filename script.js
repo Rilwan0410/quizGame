@@ -1,6 +1,18 @@
 let timer = 75;
+let finalScore = document.querySelector(".final-score");
+let results = document.querySelector(".end-result");
+let endGameText = document.querySelector(".end-game-text");
 let startTest = false;
 let count = document.querySelector(".timer .count");
+
+if (startTest) {
+  let time = setInterval(() => {
+    if (timer <= 0) return;
+    timer--;
+    count.innerText = timer;
+  }, 1000);
+}
+
 count.innerText = timer;
 let questions = [
   {
@@ -190,11 +202,11 @@ q5.innerHTML = `
 <div class="correct">Correct ✅</div>
 </div>`;
 
-questionContainer.append(q1);
-questionContainer.append(q2);
-questionContainer.append(q3);
-questionContainer.append(q4);
-questionContainer.append(q5);
+// questionContainer.append(q1);
+// questionContainer.append(q2);
+// questionContainer.append(q3);
+// questionContainer.append(q4);
+// questionContainer.append(q5);
 let question = document.querySelectorAll(".question");
 console.log(questionContainer);
 
@@ -227,6 +239,8 @@ function checkCorrect(answer, validation, el) {
     console.log("correct");
   } else if (answer !== validation) {
     validate(el, "incorrect");
+    timer -= 10;
+    count.innerText = timer;
     console.log("incorrect");
   }
 }
@@ -256,7 +270,15 @@ function validate(valid, result) {
         }
       });
     if (valid.dataset.question === "5") {
+      clearInterval(time);
       console.log("test over!");
+      if (timer > 45) {
+        endGameText.innerText = "Nicely Done 😁";
+      } else {
+        endGameText.innerText = "Better Luck Next Time 🙃";
+      }
+      finalScore.innerText = timer;
+      results.classList.add("show");
     }
   }, 2000);
 }
