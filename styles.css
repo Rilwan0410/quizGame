@@ -4,21 +4,27 @@ body {
   font-family: poppins;
   display: flex;
   justify-content: space-around;
+  /* overflow:scroll; */
   height: 100vh;
 }
 
 .questions {
   align-self: center;
+  
 }
 
 .question {
   border: 3px solid black;
-  width: fit-content;
+  width: 650px;
   padding: 30px 50px;
   border-radius: 50px;
   position: relative;
   z-index: 100;
 }
+.question.hidden{
+    display:none;
+}
+
 .question-text {
   font-weight: 400;
   font-size: 1.5rem;
@@ -40,7 +46,7 @@ body {
   list-style: none;
   background: black;
   color: white;
-  width: 150px;
+  width:fit-content;
   padding: 15px 20px;
   border-radius: 30px;
   border: 2px solid transparent;
