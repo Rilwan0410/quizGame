@@ -43,7 +43,6 @@ setInterval(() => {
       clearInterval();
       startTest = false;
       const questionContainer = document.querySelectorAll(".questions");
-      console.log(questionContainer);
 
       questionContainer.forEach((child) => {
         child.querySelectorAll(".question").forEach((c) => {
@@ -88,8 +87,8 @@ let questions = [
     choices: [
       "Anonymous Prompt Import",
       "Application Programming Interface",
-      "All People Intergrate",
-      "All Program Included",
+      "Apply Personal Instructions",
+      "All Programs Included",
     ],
     correctAnswer: "Application Programming Interface",
   },
