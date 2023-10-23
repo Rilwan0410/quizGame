@@ -334,6 +334,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.hidden{
+  display:none;
+}
 
 .go-back,
 .clear-scores {

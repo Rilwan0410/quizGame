@@ -39,9 +39,32 @@ if (startTest) {
 }
 setInterval(() => {
   if (startTest) {
-    if (timer <= 0) return;
-    timer--;
-    count.innerText = timer;
+    if (timer === 0) {
+      clearInterval();
+      startTest = false;
+      const questionContainer = document.querySelectorAll(".questions");
+      console.log(questionContainer);
+
+      questionContainer.forEach((child) => {
+        child.querySelectorAll(".question").forEach((c) => {
+          c.remove(child);
+        });
+      });
+
+      results.classList.add("show");
+      if (timer > 35) {
+        endGameText.innerText = "Nicely Done 😁";
+      } else {
+        endGameText.innerText = "Better Luck Next Time 🙃";
+      }
+      finalScore.innerText = timer;
+    }
+
+    if (timer > 0) {
+      timer--;
+      count.innerText = timer;
+    }
+    // return
   }
 }, 1000);
 
