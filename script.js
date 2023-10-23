@@ -350,7 +350,7 @@ function addScore(arr) {
     arr.forEach((score) => {
       let newScore = document.createElement("li");
       newScore.classList.add("score");
-      newScore.innerHTML = ` <span>${score.initials} - </span> <span class="score-number">${score.score}</span>`;
+      newScore.innerHTML = ` <span>${score.initials} - </span> <span class="score-number"> ${score.score}</span>`;
       highScores.appendChild(newScore);
     });
   } else {
