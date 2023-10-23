@@ -86,17 +86,15 @@ let questions = [
 ];
 
 //===========================================================================================================================================
+//===========================================================================================================================================
 
-//=========================================================================================================================================
 function checkCorrect(answer, validation, el) {
   if (answer === validation) {
     validate(el, "correct");
-    console.log("correct");
   } else if (answer !== validation) {
     validate(el, "incorrect");
     timer -= 10;
     count.innerText = timer;
-    console.log("incorrect");
   }
 }
 
@@ -121,7 +119,6 @@ function validate(valid, result) {
     if (valid.dataset.question === "5") {
       clearInterval();
       startTest = false;
-      console.log("test over!");
       if (timer > 35) {
         endGameText.innerText = "Nicely Done 😁";
       } else {
@@ -308,19 +305,16 @@ function initGame() {
 }
 
 function saveScore(name, score) {
-  console.log(name, score);
   if (localStorage.getItem("_HIGHSCORES") == null) {
     let arr = [];
     arr.push({ initials: name, score: score });
-    console.log(arr);
+
     saveToLocal(arr);
     addScore(arr);
   } else if (localStorage.getItem("_HIGHSCORES")) {
     let arr = JSON.parse(localStorage.getItem("_HIGHSCORES"));
     arr.push({ initials: name, score });
-    console.log(arr);
     saveToLocal(arr);
-    console.log(arr);
     addScore(arr);
   }
 }
@@ -352,7 +346,6 @@ function checkLocal(arr) {
   let getFromLocal = localStorage.getItem("_HIGHSCORES");
   if (getFromLocal != null) {
     let data = JSON.parse(getFromLocal);
-    console.log(data);
     arr.push(data);
   } else return;
 
@@ -372,7 +365,7 @@ function submit() {
 
   timer = 75;
   count.innerText = timer;
-  initialsEntered.value = ''
+  initialsEntered.value = "";
 }
 
 function goBack() {
