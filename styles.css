@@ -160,7 +160,9 @@ body {
   /* justify-content:center; */
   box-shadow: 0 5px 5px rgb(202, 196, 196);
   border:2px solid var(--darkblue);
+  background:white;
   position: absolute;
+  z-index:100;
   top: 50%;
   width: 400px;
   margin-left: 15px;
